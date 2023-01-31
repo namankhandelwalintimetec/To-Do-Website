@@ -1,12 +1,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
 body{
   background: #88ABFF;
 }
@@ -22,6 +22,7 @@ body{
   gap: 25px;
   grid-template-columns: repeat(auto-fill, 265px);
 }
+
 .wrapper li{
   height: 250px;
   list-style: none;
@@ -68,34 +69,11 @@ body{
   max-height: 165px;
   overflow-y: auto;
 }
-.note .details::-webkit-scrollbar,
-.popup textarea::-webkit-scrollbar{
-  width: 0;
-}
-.note .details:hover::-webkit-scrollbar,
-.popup textarea:hover::-webkit-scrollbar{
-  width: 5px;
-}
-.note .details:hover::-webkit-scrollbar-track,
-.popup textarea:hover::-webkit-scrollbar-track{
-  background: #f1f1f1;
-  border-radius: 25px;
-}
-.note .details:hover::-webkit-scrollbar-thumb,
-.popup textarea:hover::-webkit-scrollbar-thumb{
-  background: #e6e6e6;
-  border-radius: 25px;
-}
 .note p{
   font-size: 22px;
   font-weight: 500;
 }
-.note span{
-  display: block;
-  color: #575757;
-  font-size: 16px;
-  margin-top: 5px;
-}
+
 .note .bottom-content{
   padding-top: 10px;
   border-top: 1px solid #ccc;
@@ -104,14 +82,11 @@ body{
   color: #6D6D6D;
   font-size: 14px;
 }
+
 .bottom-content .settings{
   position: relative;
 }
-.bottom-content .settings i{
-  color: #6D6D6D;
-  cursor: pointer;
-  font-size: 15px;
-}
+
 .settings .menu{
   z-index: 1;
   bottom: 0;
@@ -128,6 +103,7 @@ body{
 .settings.show .menu{
   transform: scale(1);
 }
+
 .settings .menu li{
   height: 25px;
   font-size: 16px;
@@ -141,9 +117,7 @@ body{
 .menu li:last-child{
   margin-bottom: 0;
 }
-.menu li:hover{
-  background: #f5f5f5;
-}
+
 .menu li i{
   padding-right: 8px;
 }
@@ -152,7 +126,6 @@ body{
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.4);

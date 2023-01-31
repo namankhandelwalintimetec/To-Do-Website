@@ -20,8 +20,8 @@ else{
 let isUpdate = false, updateId;
 
 addBox.addEventListener("click", () => {
-    popupTitle.innerText = "Add a new Note";
-    addBtn.innerText = "Add Note";
+    popupTitle.innerText = "Add a new Task";
+    addBtn.innerText = "Add Task";
     popupBox.classList.add("show");
     document.querySelector("body").style.overflow = "hidden";
     if(window.innerWidth > 660) titleTag.focus();
@@ -88,8 +88,8 @@ function updateNote(noteId, title, filterDesc) {
     addBox.click();
     titleTag.value = title;
     descTag.value = description;
-    popupTitle.innerText = "Update a Note";
-    addBtn.innerText = "Update Note";
+    popupTitle.innerText = "Update Task";
+    addBtn.innerText = "Update Task";
 }
 
 addBtn.addEventListener("click", e => {
