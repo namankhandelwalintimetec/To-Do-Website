@@ -6,8 +6,6 @@ titleTag = popupBox.querySelector("input"),
 descTag = popupBox.querySelector("textarea"),
 addBtn = document.querySelector(".button");
 
-// const months = ["January", "February", "March", "April", "May", "June", "July",
-//               "August", "September", "October", "November", "December"];
 
 var notes;
 if(localStorage.getItem("notes"))
@@ -98,8 +96,9 @@ addBtn.addEventListener("click", e => {
     description = descTag.value.trim();
 
        if(title && description)
-       { let currentDate = new Date(),
-         month = currentDate.getMonth(),
+       { 
+        let currentDate = new Date(),
+        month = currentDate.getMonth(),
         day = currentDate.getDate(),
         year = currentDate.getFullYear();
         hour =currentDate.getHours();
