@@ -4,12 +4,11 @@ let popupBox = document.querySelector(".popup-box");
 let popupTitle = document.querySelector("header p");
 let closeIcon = document.querySelector("header i");
 let element = document.querySelector("#element");
-let titleTag = document.querySelector("input");
-let descTag = document.querySelector("textarea");
-let addBtn = document.querySelector(".button");
+let titleTag = (document.querySelector("input"));
+let descTag = (document.querySelector("textarea"));
+let addBtn = (document.querySelector(".button"));
 let body = document.querySelector("body");
 let notes = JSON.parse(localStorage.getItem("notes") || "[]");
-// let closeButton: HTMLElement = <HTMLElement>document.querySelector(".menu");
 let currentDate = new Date();
 let isUpdate = false;
 let noteInfo;
@@ -19,31 +18,32 @@ let liTag;
 let description;
 let title;
 let monthName = [
-  "Jan",
-  "Feb",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
+    "Jan",
+    "Feb",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
 ];
 addBox.addEventListener("click", () => {
-  openPopup();
+    openPopup();
 });
 closeIcon.addEventListener("click", () => {
-  closePopup();
+    closePopup();
 });
 function showNotes() {
-  if (!notes) return;
-  document.querySelectorAll(".note").forEach((li) => li.remove());
-  notes.forEach((note, id) => {
-    filterDesc = note.description.replaceAll("\n", "<br/>");
-    liTag = `<li class="note">
+    if (!notes)
+        return;
+    document.querySelectorAll(".note").forEach((li) => li.remove());
+    notes.forEach((note, id) => {
+        filterDesc = note.description.replaceAll("\n", "<br/>");
+        liTag = `<li class="note">
 							<div class="details">
 								<p>${note.title}</p>
 								<span>${note.description}</span>
@@ -59,84 +59,80 @@ function showNotes() {
 								</div>
 							</div>
 						</li>`;
-    addBox.insertAdjacentHTML("afterend", liTag);
-  });
+        addBox.insertAdjacentHTML("afterend", liTag);
+    });
 }
 function showMenu(element) {
-  var _a;
-  (_a = element.parentElement) === null || _a === void 0
-    ? void 0
-    : _a.classList.add("show");
-  document.addEventListener("click", (event) => {
     var _a;
-    if (event.target != element) {
-      (_a = element.parentElement) === null || _a === void 0
-        ? void 0
-        : _a.classList.remove("show");
-    }
-  });
+    (_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.classList.add("show");
+    document.addEventListener("click", (event) => {
+        var _a;
+        if (event.target != element) {
+            (_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.classList.remove("show");
+        }
+    });
 }
 function deleteNote(noteId) {
-  remove(noteId);
-  showNotes();
+    remove(noteId);
+    showNotes();
 }
 function updateNote(noteId, title, filterDesc) {
-  modifyNote(noteId, title, filterDesc);
+    modifyNote(noteId, title, filterDesc);
 }
 addBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  addNote(title, description);
+    event.preventDefault();
+    addNote(title, description);
 });
 function addNote(title, description) {
-  title = titleTag.value.trim();
-  description = descTag.value.trim();
-  if (title && description) {
-    noteInfo = {
-      title,
-      description,
-      date: ` ${
-        monthName[currentDate.getMonth()]
-      }/${currentDate.getDate()}/${currentDate.getFullYear()} (${currentDate.getHours()}:${currentDate.getMinutes()})`,
-    };
-    if (!isUpdate) {
-      notes.push(noteInfo);
-    } else {
-      isUpdate = false;
-      notes[updateId] = noteInfo;
+    title = titleTag.value.trim();
+    description = descTag.value.trim();
+    if (title && description) {
+        noteInfo = {
+            title,
+            description,
+            date: ` ${monthName[currentDate.getMonth()]}/${currentDate.getDate()}/${currentDate.getFullYear()} (${currentDate.getHours()}:${currentDate.getMinutes()})`,
+        };
+        if (!isUpdate) {
+            notes.push(noteInfo);
+        }
+        else {
+            isUpdate = false;
+            notes[updateId] = noteInfo;
+        }
+        localStorage.setItem("notes", JSON.stringify(notes));
+        showNotes();
+        closeIcon.click();
     }
-    localStorage.setItem("notes", JSON.stringify(notes));
-    showNotes();
-    closeIcon.click();
-  } else {
-    alert("Please enter some valid Input");
-  }
+    else {
+        alert("Please enter some valid Input");
+    }
 }
 function openPopup() {
-  popupTitle.innerText = "Add a new Task";
-  addBtn.innerText = "Add Task";
-  popupBox.classList.add("show");
-  body.style.overflow = "hidden";
-  if (window.innerWidth > 660) titleTag.focus();
+    popupTitle.innerText = "Add a new Task";
+    addBtn.innerText = "Add Task";
+    popupBox.classList.add("show");
+    body.style.overflow = "hidden";
+    if (window.innerWidth > 660)
+        titleTag.focus();
 }
 function closePopup() {
-  isUpdate = false;
-  titleTag.value = descTag.value = "";
-  popupBox.classList.remove("show");
-  body.style.overflow = "auto";
+    isUpdate = false;
+    titleTag.value = descTag.value = "";
+    popupBox.classList.remove("show");
+    body.style.overflow = "auto";
 }
 function modifyNote(noteId, title, filterDesc) {
-  body.classList.remove("show");
-  description = filterDesc.replaceAll("<br/>", "\r\n");
-  updateId = noteId;
-  isUpdate = true;
-  addBox.click();
-  titleTag.value = title;
-  descTag.value = description;
-  popupTitle.innerText = "Update Task";
-  addBtn.innerText = "Update Task";
+    body.classList.remove("show");
+    description = filterDesc.replaceAll("<br/>", "\r\n");
+    updateId = noteId;
+    isUpdate = true;
+    addBox.click();
+    titleTag.value = title;
+    descTag.value = description;
+    popupTitle.innerText = "Update Task";
+    addBtn.innerText = "Update Task";
 }
 function remove(noteId) {
-  //closeButton.classList.remove("show");
-  notes.splice(noteId, 1);
-  localStorage.setItem("notes", JSON.stringify(notes));
+    notes.splice(noteId, 1);
+    localStorage.setItem("notes", JSON.stringify(notes));
 }

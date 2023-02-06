@@ -16,7 +16,6 @@ let body: HTMLElement = <HTMLElement>document.querySelector("body");
 let notes: { title: string; description: string; date: string }[] = JSON.parse(
 	localStorage.getItem("notes") || "[]"
 );
-// let closeButton: HTMLElement = <HTMLElement>document.querySelector(".menu");
 let currentDate: Date = new Date();
 let isUpdate: boolean = false;
 let noteInfo: { title: string; description: string; date: string };
@@ -149,7 +148,6 @@ function modifyNote(noteId: number, title: string, filterDesc: string): void {
 }
 
 function remove(noteId: number): void {
-	//closeButton.classList.remove("show");
 	notes.splice(noteId, 1);
 	localStorage.setItem("notes", JSON.stringify(notes));
 }
